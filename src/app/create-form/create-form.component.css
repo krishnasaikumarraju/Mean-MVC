@@ -1,0 +1,49 @@
+body
+{
+  text-align: center;
+}
+
+form
+{
+  border:solid thick rgb(10, 15, 15) ;
+  width:40%;
+  margin:0 auto;
+}
+
+div 
+{
+  color:black;
+  font-family: Verdana;
+  padding: 5mm; 
+  
+}
+
+/* .ng-valid
+{
+  border-left: solid thin green;
+}  */
+
+/* .ng-invalid
+{
+  border-left: solid thin blue;
+} */
+
+
+
+p
+{
+  color:rgba(224, 26, 208, 0.801);
+}
+
+.binding{
+  float:right;
+}
+button{
+    background-color: bisque;
+    margin:0 auto;
+    margin-left: 40%; 
+   
+}
+
+
+

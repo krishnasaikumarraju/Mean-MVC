@@ -1,0 +1,71 @@
+<div>
+  <button mat-stroked-button style="margin-left:5cm;" mat-button routerLink="/form">add User +</button>
+  <span>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+    </mat-form-field>
+  </span>
+  <table mat-table  [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>No. </th>
+      <td mat-cell *matCellDef="let i=index"> {{i+1}} </td>
+    </ng-container>
+
+    <!-- FirstName Column -->
+    <ng-container matColumnDef="fname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>FirstName </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+
+    <!-- LastName Column -->
+    <ng-container matColumnDef="lname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> LastName </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+
+    <!-- Mobile Number Column -->
+    <ng-container matColumnDef="mobile">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile Number </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <!-- Sex Column -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Sex </th>
+      <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+    </ng-container>
+
+    <!-- Birthday Column -->
+    <ng-container matColumnDef="birthday">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Birthday </th>
+      <td mat-cell *matCellDef="let element"> {{element.dob | date}} </td>
+    </ng-container>
+
+    <!-- Material Buttons -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> ???? </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color='Warn' (click)="deleteData(element._id)">Delete</button>
+        <button mat-stroked-button color='Primary' (click)="editData(element._id)">Edit</button>
+      </td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- <button mat-stroked-button class="add" style="margin-left:5cm; margin-top: 0.5cm;" mat-button routerLink="/form">add User +</button> -->
+
+</div>
+
+
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

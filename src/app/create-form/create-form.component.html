@@ -1,0 +1,74 @@
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+<div>
+  <form #regForm="ngForm">
+      <button mat-button   routerLink="/list">Back</button>
+    <div>
+      <div>
+        <mat-form-field class="example-full-width">
+          <input #userfname name="fname" required="string" pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="editeddata.firstName" minlength="5" maxlength="12"
+            matInput placeholder="First Name ?">
+        </mat-form-field>
+        <br>
+
+        <p [hidden]="userfname.checkValidity()">
+          Min:5 char, Max:12 char
+        </p>
+      </div>
+
+      <div>
+        <mat-form-field class="example-full-width">
+          <input #userlname name="lname" required="string" pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="editeddata.lastName" minlength="5" maxlength="12"
+            matInput placeholder="Last Name ?">
+        </mat-form-field>
+        <br>
+
+        <p [hidden]="userlname.checkValidity()">
+          Min:5 char, Max:12 char
+        </p>
+      </div>
+
+
+      <div>
+        <mat-form-field class="example-full-width">
+          <input #userphone name="uphone" required pattern="[0-9]+" [(ngModel)]="editeddata.phone" matInput placeholder="Phone ?" minlength="10"
+            maxlength="11">
+        </mat-form-field>
+        <br>
+        <p [hidden]="userphone.checkValidity()">
+          eg:9876543210
+        </p>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-select [(ngModel)]="editeddata.gender" name="ugender" required placeholder="Gender ?">
+            <mat-option>None</mat-option>
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput [(ngModel)]="editeddata.dob" name="udob" required [matDatepicker]="picker" placeholder="D.O.B">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+
+
+      <div>
+        <mat-checkbox required [(ngModel)]="editeddata.active" name="uactive"  >Active</mat-checkbox>
+      </div>
+
+
+    </div>
+    <br>
+    <button mat-stroked-button color="Warn" [disabled]="!regForm.valid" (click)="push(regForm)" routerLink="/list">{{editeddata._id ? 'Update':'Submit'}}</button>
+    <!-- <button *ngIf="screen==true" mat-stroked-button (click)="update(regForm)" routerLink="/list">Update</button> -->
+  </form>
+</div>
